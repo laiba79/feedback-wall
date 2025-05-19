@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Feedback Wall</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <button id="theme-toggle" class="btn btn-outline" title="Toggle theme">
+        <i class="fas fa-moon"></i>
+      </button>
+      <h1><i class="fas fa-comment-alt"></i> Enhanced Feedback Wall</h1>
+      <div class="user-controls">
+        <button id="login-btn" class="btn btn-outline">Login</button>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="feedback-form">
+        <div class="form-group">
+          <label for="feedback-content">Your Feedback</label>
+          <textarea id="feedback-content" placeholder="Share your thoughts..."></textarea>
+          <div class="format-toolbar">
+            <button class="format-btn" data-format="bold" title="Bold"><i class="fas fa-bold fa-fw"></i></button>
+            <button class="format-btn" data-format="italic" title="Italic"><i class="fas fa-italic fa-fw"></i></button>
+            <button class="format-btn" data-format="link" title="Link"><i class="fas fa-link fa-fw"></i></button>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="feedback-author">Your Name (optional)</label>
+            <input type="text" id="feedback-author" placeholder="Anonymous">
+          </div>
+          
+          <div class="form-group">
+            <label for="feedback-category">Category</label>
+            <select id="feedback-category">
+              <option value="General">General</option>
+              <option value="Feature Request">Feature Request</option>
+              <option value="Bug Report">Bug Report</option>
+              <option value="Compliment">Compliment</option>
+            </select>
+          </div>
+        </div>
+        
+        <button id="submit-feedback" class="btn btn-primary btn-block">
+          <i class="fas fa-paper-plane fa-fw"></i> Post Feedback
+        </button>
+      </section>
+
+      <section class="feedback-filters">
+        <div class="filter-group">
+          <label for="sort-by">Sort by:</label>
+          <select id="sort-by">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="votes">Most Popular</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <label for="filter-category">Filter by category:</label>
+          <select id="filter-category">
+            <option value="all">All Categories</option>
+            <option value="General">General</option>
+            <option value="Feature Request">Feature Request</option>
+            <option value="Bug Report">Bug Report</option>
+            <option value="Compliment">Compliment</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="feedback-list" id="feedback-list">
+        <div class="empty-state" style="display: none;">
+          <i class="fas fa-comment-slash"></i>
+          <p>No feedback yet. Be the first to share your thoughts!</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>© 2025 Enhanced Feedback Wall | Built with Node.js, Express, and Socket.io</p>
+    </footer>
+  </div>
+
+  <div class="modal" id="login-modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Login to Your Account</h2>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="username">Email Address</label>
+          <input type="email" id="username" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required>
+          <div class="forgot-password">
+            <a href="#">Forgot password?</a>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+        <div class="login-divider">or</div>
+        <button type="button" class="btn btn-outline btn-block">
+          <i class="fab fa-google fa-fw"></i> Continue with Google
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
